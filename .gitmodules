@@ -1,0 +1,4 @@
+[submodule "slam_dev_docker"]
+	path = slam_dev_docker
+	url = https://github.com/sqn175/slam_dev_docker.git
+	branch = PlanarSLAM
