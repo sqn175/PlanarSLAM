@@ -1,0 +1,30 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "g++ - Build and debug active file",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/build/Planar_SLAM",
+      "args": ["Vocabulary/ORBvoc.txt", "Examples/RGB-D/orbbec_itof.yaml", "/dataset/data03_300f_20211116_tum_rgbd", "/dataset/data03_300f_20211116_tum_rgbd/association.txt"],
+      // "args": ["Vocabulary/ORBvoc.txt", "Examples/RGB-D/TUM3.yaml", "/workspaces/PlanarSLAM/Examples/RGB-D/rgbd_dataset_freiburg3_structure_texture_far", "/workspaces/PlanarSLAM/Examples/RGB-D/rgbd_dataset_freiburg3_structure_texture_far/associations.txt"],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "make",
+      "miDebuggerPath": "/usr/bin/gdb"
+    }
+  ]
+}

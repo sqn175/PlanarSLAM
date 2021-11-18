@@ -55,8 +55,6 @@ include_directories(include/peac)
 add_definitions(${PCL_DEFINITIONS})
 link_directories(${PCL_LIBRARY_DIRS})
 
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
-
 add_library(${PROJECT_NAME} SHARED
         src/System.cc
         src/Tracking.cc
@@ -98,8 +96,6 @@ target_link_libraries(${PROJECT_NAME}
         )
 
 # Build examples
-
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/Examples/RGB-D)
 add_executable(Planar_SLAM Examples/RGB-D/main.cc)
 target_link_libraries(Planar_SLAM ${PROJECT_NAME})
 
