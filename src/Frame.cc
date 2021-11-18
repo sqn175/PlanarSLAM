@@ -645,7 +645,7 @@ namespace Planar_SLAM {
     }
 
     void Frame::ComputePlanes(const cv::Mat &imDepth, const cv::Mat &Depth, const cv::Mat &imRGB, cv::Mat K) {
-        planeDetector.readColorImage(imRGB);
+        // planeDetector.readColorImage(imRGB);
         planeDetector.readDepthImage(Depth, K);
         planeDetector.runPlaneDetection();
 

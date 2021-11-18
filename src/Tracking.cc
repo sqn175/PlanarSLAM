@@ -156,21 +156,23 @@ namespace Planar_SLAM {
 
     cv::Mat Tracking::GrabImageRGBD(const cv::Mat &imRGB, const cv::Mat &imD, const double &timestamp) {
         mImRGB = imRGB;
-        mImGray = imRGB;
+        cv::Mat tmpImGray = imRGB;
         mImDepth = imD;
 
-        if (mImGray.channels() == 3) {
+        if (tmpImGray.channels() == 3) {
             if (mbRGB)
-                cvtColor(mImGray, mImGray, CV_RGB2GRAY);
+                cvtColor(tmpImGray, tmpImGray, CV_RGB2GRAY);
             else
-                cvtColor(mImGray, mImGray, CV_BGR2GRAY);
-        } else if (mImGray.channels() == 4) {
+                cvtColor(tmpImGray, tmpImGray, CV_BGR2GRAY);
+        } else if (tmpImGray.channels() == 4) {
             if (mbRGB)
-                cvtColor(mImGray, mImGray, CV_RGBA2GRAY);
+                cvtColor(tmpImGray, tmpImGray, CV_RGBA2GRAY);
             else
-                cvtColor(mImGray, mImGray, CV_BGRA2GRAY);
+                cvtColor(tmpImGray, tmpImGray, CV_BGRA2GRAY);
+        } else if (tmpImGray.type() != CV_8U)
+        {
+            tmpImGray.convertTo(mImGray, CV_8U, 1.f / 2.f);
         }
-
 
         std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
 
